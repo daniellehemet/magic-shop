@@ -7,20 +7,45 @@
 
 /* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;700&family=Halant&family=Iceberg&display=swap');
+/* font-family: 'Alegreya Sans SC',
+sans-serif;
+
+font-family: 'Halant',
+serif;
+
+font-family: 'Iceberg',
+cursive; */
 
 .App {
-  text-align: center;
   background-color: #CBF3F0;
 }
 
 .header {
   background-color: #2EC4B6;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Iceberg', cursive;
+  margin: 0 auto;
 }
 
 h1 {
   margin: 0;
-  padding: 5rem 5rem 0 5rem;
+  padding: 2rem;
   color: #FFFFFF;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 4rem;
+}
+
+.header h2 {
+  font-style: italic;
+  margin: auto 2rem;
+  font-size: 1.7rem;
+}
+
+.header p {
+  margin: auto 2rem;
+  width: 300px;
+  text-align: right;
 }
 
 ul {
