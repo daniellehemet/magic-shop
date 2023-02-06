@@ -3,13 +3,14 @@ import firebase from './firebase';
 import {useEffect, useState} from 'react';
 import {getDatabase, ref, onValue} from 'firebase/database';
 // Components
-
+import Header from "./Components/Header";
 // Assets
 import './App.css';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const database = getDatabase(firebase)
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>MagicShop</h1>
+      <Header />
       <ul>
         {products.map((product) => {
           return (
