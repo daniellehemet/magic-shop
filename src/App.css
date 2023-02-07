@@ -18,7 +18,7 @@ cursive; */
 
 .App {
   background-color: #CBF3F0;
-  height: 100vh;
+  min-height: 110vh;
   
 }
 
@@ -57,16 +57,17 @@ h1 {
   justify-content: space-between;
 }
 
-ul {
+ul.inventory {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 0;
   margin: 50px auto;
   width: 70%;
   height: 100%;
 }
 
-li {
+li.inventory {
   list-style: none;
   padding: 1rem;
   margin: 1.5rem auto;
@@ -80,20 +81,19 @@ li {
   border: 1px solid #2EC4B6;
 }
 
-li button {
+.add-to-cart {
  width: 80%;
  margin: 0 auto;
  padding: 5px;
  background-color: #FFBF69;
  box-shadow: 1px 1px 10px #FF9F1C;
- color: #FFFFFF;
  font-weight: bold;
  font-family: 'Halant', serif;
  text-transform: uppercase;
  letter-spacing: 1px;
 }
 
-li p {
+p.inventory {
   font-size: 1.2rem;
 }
 
@@ -111,18 +111,54 @@ p {
 }
 
 .cart {
-  width: 25%;
+  width: 30%;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 80vh;
+  max-height: 80vh;
   margin: 15px;
 }
 
 .cart h3 {
   font-family: 'Iceberg', cursive;
+  width: 50%;
+  margin: 60px auto 0 auto;
+  border-bottom: 1px solid #FF9F1C;
 }
+
+.cart-container {
+  padding-left: 0;
+}
+
+.cart-list {
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-around
+}
+
+.cart-list p {
+  text-align: left;
+  margin: auto 0;
+  display: inline-block;
+  font-size: 1.1rem;
+  width: 250px;
+}
+
+p.cart-price {
+  display: inline-block;
+  width: 100px;
+  text-align: end;
+}
+
+.empty {
+  text-transform: uppercase;
+}
+
+.remove {
+  padding: 0;
+}
+
+
 
 
 
