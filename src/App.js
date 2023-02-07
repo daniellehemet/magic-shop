@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import {getDatabase, ref, onValue} from 'firebase/database';
 // Components
 import Header from "./Components/Header";
+import Cart from "./Components/Cart";
 // Assets
 import './App.css';
 
@@ -37,17 +38,20 @@ function App() {
   return (
     <div className="App">
       <Header itemsInCart={cart.length}/>
-      <ul>
-        {products.map((product) => {
-          return (
-            <li key={product.id}>
-              <p>{product.name}</p>
-              <p>{product.price} GP</p>
-              <button onClick={() => { handleAddToCart(product) }}>Add To Cart</button>
-            </li>
-          )
-        })}
-      </ul>
+      <div className='wrapper'>
+        <ul>
+          {products.map((product) => {
+            return (
+              <li key={product.id}>
+                <p className='product-name'>{product.name}</p>
+                <p className='price'>Price: {product.price} GP</p>
+                <button onClick={() => { handleAddToCart(product) }}>Add To Cart</button>
+              </li>
+            )
+          })}
+        </ul>
+        <Cart />
+      </div>
     </div>
   );
 }
