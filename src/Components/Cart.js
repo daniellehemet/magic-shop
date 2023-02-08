@@ -15,9 +15,9 @@ const Cart = (props) => {
         {props.cart.map((cartItem) => {
           return (
             <li className="cart-list" key={cartItem.fbID}>
-              <p>💫 {cartItem.data.name}</p>
+              <p className='cart-name'>💫 {cartItem.data.name}</p>
               <p className="cart-price">. . . {cartItem.data.price} GP</p>
-              <button className="remove" onClick={() => { handleRemoveCartItem(cartItem.fbID)}}>Remove</button>
+              <button className="remove" onClick={() => { handleRemoveCartItem(cartItem.fbID)}}>🗑️</button>
             </li>
           )
         })}
