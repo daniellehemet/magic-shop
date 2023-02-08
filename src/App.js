@@ -9,12 +9,13 @@ import Cart from "./Components/Cart";
 import './App.css';
 
 function App() {
+  // SETTING STATES *****
   // products state for inventory
   const [products, setProducts] = useState([]);
   // cart state for cart items
   const [cart, setCart] = useState([]);
 
-
+  // useEffect *****
   useEffect(() => {
     const database = getDatabase(firebase)
     const dbRef = ref(database, "/inventory")
@@ -42,6 +43,7 @@ function App() {
     })
   }, [])
 
+  // "Add To Cart" Button Function *****
   const handleAddToCart = (product) => {
     const database = getDatabase(firebase)
     const cartRef = ref(database, "/cart")
