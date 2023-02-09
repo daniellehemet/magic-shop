@@ -1,23 +1,74 @@
-import logo from './logo.svg';
+// Modules
+import firebase from './firebase';
+import {useEffect, useState} from 'react';
+import {getDatabase, ref, onValue, push} from 'firebase/database';
+// Components
+import Header from "./Components/Header";
+import Cart from "./Components/Cart";
+import Footer from "./Components/Footer";
+// Assets
 import './App.css';
 
 function App() {
+  // SETTING STATES *****
+  // products state for inventory
+  const [products, setProducts] = useState([]);
+  // cart state for cart items
+  const [cart, setCart] = useState([]);
+
+  // useEffect *****
+  useEffect(() => {
+    const database = getDatabase(firebase)
+    const dbRef = ref(database, "/inventory")
+    const cartRef = ref(database, "/cart")
+    // pulling inventory data
+    onValue(dbRef, (response) => {
+      const newState = [];
+      const data = response.val();
+      for (let key in data) {
+        newState.push(data[key]);
+      }
+      setProducts(newState);
+    })
+    // pulling cart data
+    onValue(cartRef, (response) =>{
+      const newState = [];
+      const cartData = response.val();
+      for (let key in cartData) {
+        newState.push({
+          fbID: key, 
+          data: cartData[key]
+      });
+      }
+      setCart(newState);
+    })
+  }, [])
+
+  // "Add To Cart" Button Function *****
+  const handleAddToCart = (product) => {
+    const database = getDatabase(firebase)
+    const cartRef = ref(database, "/cart")
+    push(cartRef, product)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header itemsInCart={cart.length}/>
+      <div className='wrapper'>
+        <ul className='inventory'>
+          {products.map((product) => {
+            return (
+              <li className="inventory" key={product.id}>
+                <p className='product-name'>{product.name}</p>
+                <p className='price'>Price: {product.price} GP</p>
+                <button className="add-to-cart" onClick={() => { handleAddToCart(product) }}>Add To Cart</button>
+              </li>
+            )
+          })}
+        </ul>
+        <Cart cart={cart}/>
+      </div>
+      <Footer />
     </div>
   );
 }
