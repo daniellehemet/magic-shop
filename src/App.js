@@ -5,6 +5,7 @@ import {getDatabase, ref, onValue, push} from 'firebase/database';
 // Components
 import Header from "./Components/Header";
 import Cart from "./Components/Cart";
+import Footer from "./Components/Footer";
 // Assets
 import './App.css';
 
@@ -67,6 +68,7 @@ function App() {
         </ul>
         <Cart cart={cart}/>
       </div>
+      <Footer />
     </div>
   );
 }
